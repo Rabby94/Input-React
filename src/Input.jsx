@@ -1,6 +1,46 @@
 import React from "react";
+import { useState } from "react";
 import logo from "./img/Bootstrap_logo.svg.png";
+
 const Input = () => {
+  const [fName, setFname] = useState("N/A");
+  const [lName, setLname] = useState("N/A");
+  const [userName, setUsername] = useState("N/A");
+  const [email ,setEmail]= useState("N/A");
+  const [address,setAddress]=useState("N/A");
+  const [address2,setAddress2]=useState("N/A");
+  const [country,setCountry]=useState("N/A");
+  const [state, setState]=useState("N/A");
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+  }
+  const handelFirstName = (e)=> {
+    setFname(e.target.value);
+  }
+
+  const handelLastName=(e)=> {
+    setLname(e.target.value);
+  }
+  const handelUserName =(e)=>{
+    setUsername(e.target.value);
+  }
+ const handelEmail=(e) => {
+  setEmail(e.target.value);
+ }
+ const handelAddress =(e) => {
+  setAddress(e.target.value);
+ }
+ const handelAddress2 =(e) => {
+  setAddress2(e.target.value);
+ }
+const handelCountry =(e) => {
+ setCountry(e.target.value)
+  }
+  const handelState = (e) =>{
+    setState(e.target.value)
+  }
+
   return (
     <div className="container">
       <div className="row d-flex justify-content-center ">
@@ -24,185 +64,278 @@ const Input = () => {
       <div className="row justify-content-between my-3">
         <div className="col-md-8">
           <h5>Billing Address</h5>
-          <form action="" className="justify-conten-between">
+          <form className="justify-conten-between" onSubmit={handleSubmit}>
             <div className="row">
               <div className="col-lg-6">
-                <label className="form-label" htmlFor="">
+                <label 
+                 className="form-label" 
+                 htmlFor="firstName">
                   First name
                 </label>
-                <input type="text" className="form-control" />
+                <input 
+                type="text" 
+                className="form-control" 
+                id="firstName" 
+                onChange={handelFirstName}/>
               </div>
               <div className="col-lg-6">
-                <label className="form-label" htmlFor="">
+                <label 
+                className="form-label"
+                 htmlFor="lastName">
                   Last Name
                 </label>
-                <input type="text" className="form-control" />
+                <input 
+                type="text"
+                 className="form-control" 
+                 id="lastName" 
+                 onChange={handelLastName}
+                 />
               </div>
             </div>
             <div className="row my-3">
               <div className="col">
-                <label className="form-label" htmlFor="">
-                  User Name
+                <label 
+                  className="form-label" 
+                  htmlFor="userName">
+                    User Name
                 </label>
-                <div class="input-group">
-                  <span class="input-group-text" id="basic-addon1">
+
+                <div className="input-group">
+                  <span 
+                  className="input-group-text" 
+                  id="basic-addon1">
                     @
                   </span>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Username"
+                    id="userName"
+                    onChange={handelUserName}
                   />
                 </div>
               </div>
             </div>
             <div className="row my-3">
               <div className="col-12">
-                <label htmlFor="" className="form-label">
-                  Email
+                <label 
+                  htmlFor="email"
+                   className="form-label">
+                   Email
                   <span className="text-muted">(optional)</span>
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   placeholder="you@exampal.com"
+                  id="email"
+                  onChange={handelEmail}
                 />
               </div>
             </div>
             <div className="row my-3">
               <div className="col-12">
-                <label htmlFor="" className="form-label">
-                  Address
+                <label 
+                  htmlFor="Address" 
+                  className="form-label">
+                    Address
                 </label>
                 <input
                   type="text"
                   className="form-control"
+                  id="Address"
                   placeholder="1234 main st"
+                  onChange={handelAddress}
                 />
               </div>
             </div>
             <div className="row my-3">
               <div className="col-12">
-                <label htmlFor="" className="form-label">
-                  Address
+                <label
+                   htmlFor="address2" 
+                   className="form-label">
+                    Address
                   <span className="text-muted">(optional)</span>
                 </label>
                 <input
+                  id="address2"
                   type="text"
                   className="form-control"
                   placeholder="Apartment or suite"
+                  onChange={handelAddress2}
                 />
               </div>
             </div>
             <div className="row justify-content-between">
               <div className="col-5">
-                <label className="form-label" htmlFor="">
-                  country
+                <label 
+                  className="form-label" 
+                  htmlFor="">
+                    country
                 </label>
-                <select className="form-select">
-                  <option value="">Chooss..... </option>
-                  <option value="">Bangladesh</option>
-                  <option value="">India</option>
-                  <option value="">Pakistan</option>
-                  <option value="">Cina</option>
+                <select className="form-select" onChange={handelCountry}>
+                  <option value="Please Select ">Chooss..... </option>
+                  <option value="Bangladesh">Bangladesh</option>
+                  <option value="India">India</option>
+                  <option value="Pakistan">Pakistan</option>
+                  <option value="Cina">Cina</option>
                 </select>
               </div>
               <div className="col-4">
-                <label className="form-label" htmlFor="">
-                  State
+                <label 
+                  className="form-label" 
+                  htmlFor="State">
+                    State
                 </label>
-                <select className="form-select">
-                  <option value="">Chooss..... </option>
-                  <option value="">Dhaka </option>
-                  <option value="">Dilly</option>
-                  <option value="">Islamabad</option>
-                  <option value="">honkong</option>
+                <select className="form-select"
+                id="State"
+                onChange={handelState}>
+                  <option value="Please Select">Chooss..... </option>
+                  <option value="Dhaka">Dhaka </option>
+                  <option value="Dilly">Dilly</option>
+                  <option value="Islamabad">Islamabad</option>
+                  <option value="Beijing">Beijing</option>
                 </select>
               </div>
               <div className="col-3">
-                <label className="form-label" htmlFor="">
-                  Zip
+                <label 
+                  className="form-label"
+                  htmlFor="">
+                    Zip
                 </label>
-                <input type="text" className="form-control" />
+                <input 
+                  type="text"
+                   className="form-control" 
+                   />
               </div>
             </div>
             <hr className="my-4" />
-            <div className="row">
-              <div class="form-check">
+            <div className="row m-0">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
+                  value="Shipping"
+                  id="Shipping"
                 />
-                <label class="form-check-label" for="flexCheckDefault">
-                  Shipping address is the same as my billing addres
+                <label 
+                  className="form-check-label" 
+                  htmlFor="Shipping">
+                    Shipping address is the same as my billing addres
                 </label>
               </div>
-            </div>
-            <div className="row">
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
+                  value="Save"
+                  id="Save"
                 />
-                <label class="form-check-label" for="flexCheckDefault">
-                  Save this information for next time
+                <label 
+                  className="form-check-label" 
+                  htmlFor="Save">
+                    Save this information for next time
                 </label>
               </div>
-            </div>
-            <hr className="my-4" />
-            <div className="row">
-              <h4>Payment</h4>
-              <div class="form-check">
+              <hr className="my-4" />
+              <h4 className="p-0">Payment</h4>
+              <div className="form-check">
                 <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
+                  className="form-check-input"
+                  type="radio"
+                  value="Credit"
+                  name="pament"
                 />
-                <label class="form-check-label" for="flexCheckDefault">
-                Credit card
+                <label 
+                  className="form-check-label" 
+                  htmlFor="flexCheckDefault">
+                    Credit card
                 </label>
               </div>
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
+                  className="form-check-input"
+                  type="radio"
+                  value="Debit"
+                  name="pament"
                 />
-                <label class="form-check-label" for="flexCheckDefault">
+                <label 
+                  className="form-check-label"
+                  htmlFor="flexCheckDefault">
                     Debit card
                 </label>
               </div>
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
+                  className="form-check-input"
+                  type="radio"
+                  value="PayPal"
+                  name="pament"
                 />
-                <label class="form-check-label" for="flexCheckDefault">
-                  PayPal
+                <label 
+                  className="form-check-label" 
+                  htmlFor="flexCheckDefault">
+                    PayPal
                 </label>
               </div>
-              <div className="row mt-3">
-                <div className="col-6">
-                  <label htmlFor="" className="form-label">Name on card</label>
-                  <input type="text" className="form-control" />
+            </div>
+            <div className="row mt-3">
+              <div className="col-6">
+                <label
+                  htmlFor=""
+                   className="form-label">
+                    Name on card
+                </label>
+                <input 
+                type="text" 
+                className="form-control" 
+                />
+              </div>
+              <div className="col-6">
+                <label 
+                  htmlFor="" 
+                  className="form-label">
+                    Credit card number
+                </label>
+                <input 
+                type="text" 
+                className="form-control" 
+                />
+              </div>
+              <p className="fs-10">Full name as displayed on card</p>
+              <div className="row">
+                <div className="col-3">
+                  <label 
+                  className="form-label" 
+                  htmlFor="">
+                    Expiration
+                  </label>
+                  <input 
+                  type="text" 
+                  className="form-control" 
+                  />
                 </div>
-                <div className="col-6">
-                  <label htmlFor="" className="form-label">Credit card number</label>
-                  <input type="text" className="form-control" />
+                <div className="col-3">
+                  <label 
+                  className="form-label" 
+                  htmlFor="">
+                    CVV
+                  </label>
+                  <input
+                   type="text" 
+                   className="form-control"
+                    />
                 </div>
+                <hr className="p-0 mt-5" />
+              </div>
+              <div className="row">
+                <button className="btn btn-primary">Submite</button>
               </div>
             </div>
           </form>
         </div>
-        <div className="col-3">hellow</div>
+
+        <div className="col-3">Card </div>
       </div>
     </div>
   );
