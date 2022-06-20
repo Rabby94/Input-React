@@ -3,61 +3,17 @@ import { useState } from "react";
 import logo from "./img/Bootstrap_logo.svg.png";
 
 const Input = () => {
-  const [fName, setFname] = useState("NA");
-  const [lName, setLname] = useState("NA");
-  const [userName, setUsername] = useState("NA");
-  const [email, setEmail] = useState("NA");
-  const [address, setAddress] = useState("NA");
-  const [address2, setAddress2] = useState("NA");
-  const [country, setCountry] = useState("NA");
-  const [state, setState] = useState("NA");
-  const [zip, setZip] = useState("NA");
-  const [checkbox, setCheckbox] = useState([]);
-  const [pyament, setPyament] = useState("Credit card");
+  const [data, setData] = useState({});
 
+  const handalChange = ({ target }) => {
+    setData( { ...data,[target.id]:target.value});
+  };
+
+  
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  const handelFirstName = (e) => {
-    setFname(e.target.value);
-  };
-
-  const handelLastName = (e) => {
-    setLname(e.target.value);
-  };
-  const handelUserName = (e) => {
-    setUsername(e.target.value);
-  };
-  const handelEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const handelAddress = (e) => {
-    setAddress(e.target.value);
-  };
-  const handelAddress2 = (e) => {
-    setAddress2(e.target.value);
-  };
-  const handelCountry = (e) => {
-    setCountry(e.target.value);
-  };
-  const handelState = (e) => {
-    setState(e.target.value);
-  };
-  const handelZip = (e) => {
-    setZip(e.target.value);
-  };
-  const handelCheckbox = (e) => {
-    let newcheck;
-    e.target.checked == true
-      ? (newcheck = [...checkbox, e.target.value])
-      : (newcheck = checkbox.filter((item) => item !== e.target.value));
-    setCheckbox(newcheck);
-  };
-
-  const handalPyament = (e) => {
-    console.log(e);
-    e.target.checked == true && setPyament(e.target.value);
-  };
+ 
 
   return (
     <div className="container">
@@ -71,7 +27,6 @@ const Input = () => {
           />
           <h2>Checkout from</h2>
           <p className="fs-5 font-italic">
-            {" "}
             Below is an example form built entirely with Bootstrap’s form
             controls. Each required form group has a validation state that can
             be triggered by attempting to submit the form without completing it.
@@ -82,7 +37,7 @@ const Input = () => {
       <div className="row justify-content-between my-3">
         <div className="col-md-8">
           <h5>Billing Address</h5>
-          <form className="justify-conten-between" onSubmit={handleSubmit}>
+          <form className="justify-conten-between" onChange={handleSubmit}>
             <div className="row">
               <div className="col-lg-6">
                 <label className="form-label" htmlFor="firstName">
@@ -92,9 +47,10 @@ const Input = () => {
                   type="text"
                   className="form-control"
                   id="firstName"
-                  onChange={handelFirstName}
+                  onChange={handalChange}
                 />
               </div>
+
               <div className="col-lg-6">
                 <label className="form-label" htmlFor="lastName">
                   Last Name
@@ -103,16 +59,16 @@ const Input = () => {
                   type="text"
                   className="form-control"
                   id="lastName"
-                  onChange={handelLastName}
+                  onChange={handalChange}
                 />
               </div>
             </div>
+
             <div className="row my-3">
               <div className="col">
                 <label className="form-label" htmlFor="userName">
                   User Name
                 </label>
-
                 <div className="input-group">
                   <span className="input-group-text" id="basic-addon1">
                     @
@@ -122,11 +78,12 @@ const Input = () => {
                     className="form-control"
                     placeholder="Username"
                     id="userName"
-                    onChange={handelUserName}
+                    onChange={handalChange}
                   />
                 </div>
               </div>
             </div>
+
             <div className="row my-3">
               <div className="col-12">
                 <label htmlFor="email" className="form-label">
@@ -138,10 +95,11 @@ const Input = () => {
                   className="form-control"
                   placeholder="you@exampal.com"
                   id="email"
-                  onChange={handelEmail}
+                  onChange={handalChange}
                 />
               </div>
             </div>
+
             <div className="row my-3">
               <div className="col-12">
                 <label htmlFor="Address" className="form-label">
@@ -152,10 +110,11 @@ const Input = () => {
                   className="form-control"
                   id="Address"
                   placeholder="1234 main st"
-                  onChange={handelAddress}
+                  onChange={handalChange}
                 />
               </div>
             </div>
+
             <div className="row my-3">
               <div className="col-12">
                 <label htmlFor="address2" className="form-label">
@@ -167,23 +126,28 @@ const Input = () => {
                   type="text"
                   className="form-control"
                   placeholder="Apartment or suite"
-                  onChange={handelAddress2}
+                  onChange={handalChange}
                 />
               </div>
             </div>
+
             <div className="row justify-content-between">
               <div className="col-5">
                 <label className="form-label" htmlFor="">
                   country
                 </label>
-                <select className="form-select" onChange={handelCountry}>
-                  <option value="NA">Chooss..... </option>
-                  <option value="Bangladesh">Bangladesh</option>
-                  <option value="India">India</option>
-                  <option value="Pakistan">Pakistan</option>
-                  <option value="Cina">Cina</option>
+                <select 
+                  className="form-select" 
+                  id="country"
+                  onChange={handalChange}>
+                    <option value="NA">Chooss..... </option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="India">India</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Cina">Cina</option>
                 </select>
               </div>
+
               <div className="col-4">
                 <label className="form-label" htmlFor="State">
                   State
@@ -191,7 +155,7 @@ const Input = () => {
                 <select
                   className="form-select"
                   id="State"
-                  onChange={handelState}
+                  onChange={handalChange}
                 >
                   <option value="NA">Chooss..... </option>
                   <option value="Dhaka">Dhaka </option>
@@ -200,6 +164,7 @@ const Input = () => {
                   <option value="Beijing">Beijing</option>
                 </select>
               </div>
+
               <div className="col-3">
                 <label className="form-label" htmlFor="zip">
                   Zip
@@ -208,114 +173,129 @@ const Input = () => {
                   type="number"
                   className="form-control"
                   id="zip"
-                  onChange={handelZip}
+                  onChange={handalChange}
                 />
               </div>
             </div>
+
             <hr className="my-4" />
+
             <div className="row m-0 ">
-              <div className="form-check " onChange={handelCheckbox}>
+              <div className="form-check ">
                 <input
                   className="form-check-input"
                   type="checkbox"
-                  value="Shipping"
                   id="Shipping"
+                  value={data["address"]}
+                  onChange={handalChange}
                 />
                 <label className="form-check-label" htmlFor="Shipping">
                   Shipping address is the same as my billing addres
                 </label>
               </div>
-              <div className="form-check" onChange={handelCheckbox}>
+              <div className="form-check">
                 <input
                   className="form-check-input"
                   type="checkbox"
                   value="Saved"
                   id="Save"
+                  onChange={handalChange}
                 />
                 <label className="form-check-label" htmlFor="Save">
                   Save this information for next time
                 </label>
               </div>
+
               <hr className="my-4" />
               <h4 className="p-0">Payment</h4>
               <div className="form-check">
                 <input
                   className="form-check-input"
                   type="radio"
-                  id="Credit"
+                  id="credit"
                   value="Credit card"
                   name="pyament"
                   checked="checked"
-                  onChange={handalPyament}
+                  onChange={handalChange}
                 />
-                <label className="form-check-label" htmlFor="Credit">
+                <label className="form-check-label" htmlFor="cridet">
                   Credit card
                 </label>
               </div>
+
               <div className="form-check">
                 <input
                   className="form-check-input"
                   type="radio"
-                  id="Debit"
+                  id="debit"
                   value="Debit"
                   name="pyament"
-                  onChange={handalPyament}
+                  onChange={handalChange}
                 />
-                <label className="form-check-label" htmlFor="Debit">
+                <label className="form-check-label" htmlFor="debit">
                   Debit card
                 </label>
               </div>
+
               <div className="form-check">
                 <input
                   className="form-check-input"
                   type="radio"
-                  id="PayPal"
+                  id="paypal"
                   value="PayPal"
                   name="pyament"
-                  onChange={handalPyament}
+                  onChange={handalChange}
                 />
-                <label className="form-check-label" htmlFor="PayPal">
+                <label className="form-check-label" htmlFor="paypal">
                   PayPal
                 </label>
               </div>
             </div>
+
             <div className="row mt-3">
               <div className="col-6">
-                <label htmlFor="" className="form-label">
+                <label htmlFor="cardName" className="form-label">
                   Name on card
                 </label>
-                <input type="text" className="form-control" />
+                <input
+                  type="text"
+                  id="cardName"
+                  className="form-control"
+                  onChange={handalChange}
+                />
               </div>
               <div className="col-6">
                 <label htmlFor="" className="form-label">
                   Credit card number
                 </label>
-                <input type="text" className="form-control" />
+                <input
+                  type="number"
+                  className="form-control"
+                  onChange={handalChange}
+                />
               </div>
               <p className="fs-10">Full name as displayed on card</p>
               <div className="row">
-                <div className="col-3">
-                  <label className="form-label" htmlFor="">
-                    Expiration
-                  </label>
-                  <input type="text" className="form-control" />
-                </div>
-                <div className="col-3">
-                  <label className="form-label" htmlFor="">
-                    CVV
-                  </label>
-                  <input type="text" className="form-control" />
-                </div>
-                <hr className="p-0 mt-5" />
-              </div>
-              <div className="row">
-                <button className="btn btn-primary">Submite</button>
+                <button
+                  className="btn btn-primary"
+                >
+                  Submite
+                </button>
               </div>
             </div>
           </form>
         </div>
 
-        <div className="col-3">Card </div>
+        <div className="col-3">
+          <div className="card mt-5">
+            <ul className="list-group list-group-flush mt-">
+              <li className="list-group-item m-2">An item</li>
+              <li className="list-group-item m-2">A second item</li>
+              <li className="list-group-item m-2">A third item</li>
+              <li className="list-group-item m-2">A third item</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
