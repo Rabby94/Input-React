@@ -6,7 +6,11 @@ const Input = () => {
   const [data, setData] = useState({});
 
   const handalChange = ({ target }) => {
-    setData( { ...data,[target.id]:target.value});
+    const newData = { ...data, [target.id]:target.value }
+    if(target.id==="shipping"){
+      newData.shipping = newData.Address;
+    }
+    setData(newData);
   };
 
   
@@ -185,11 +189,11 @@ const Input = () => {
                 <input
                   className="form-check-input"
                   type="checkbox"
-                  id="Shipping"
-                  value={data["address"]}
+                  id="shipping"
+                  // value={data["address"]}
                   onChange={handalChange}
                 />
-                <label className="form-check-label" htmlFor="Shipping">
+                <label className="form-check-label" htmlFor="shipping">
                   Shipping address is the same as my billing addres
                 </label>
               </div>
