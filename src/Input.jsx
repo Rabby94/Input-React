@@ -7,9 +7,20 @@ const Input = () => {
 
   const handalChange = ({ target }) => {
     const newData = { ...data, [target.id]:target.value }
+
+console.log("ddd", target.id);
+console.log("data",data);
+
     if(target.id==="shipping"){
       newData.shipping = newData.Address;
     }
+
+    if(target.checked === false){
+     delete newData.shipping
+    }
+ 
+   
+
     setData(newData);
   };
 
@@ -190,8 +201,7 @@ const Input = () => {
                   className="form-check-input"
                   type="checkbox"
                   id="shipping"
-                  // value={data["address"]}
-                  onChange={handalChange}
+                  onClick={handalChange}
                 />
                 <label className="form-check-label" htmlFor="shipping">
                   Shipping address is the same as my billing addres
