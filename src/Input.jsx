@@ -145,7 +145,7 @@ const Input = () => {
 
             <div className="row justify-content-between">
               <div className="col-5">
-                <label className="form-label" htmlFor="">
+                <label className="form-label" htmlFor="country">
                   country
                 </label>
                 <select
@@ -225,13 +225,13 @@ const Input = () => {
               class="form-check-input"
               type="radio"
               name="payment"
-              id="credit"
+              id="Credit"
               value="credit"
               onChange={handelRadio}
             />
             <label
              className="form-check-label" 
-             htmlFor="credit">
+             htmlFor="Credit">
               Credit Card
             </label>
           </div>
@@ -240,14 +240,14 @@ const Input = () => {
               className="form-check-input"
               type="radio"
               name="payment"
-              id="debit"
+              id="Debit"
               value="debit"
               onChange={handelRadio}
 
             />
             <label 
             className="form-check-label"
-             htmlFor="debit">
+             htmlFor="Debit">
               Debit Card
             </label>
           </div>
@@ -256,14 +256,14 @@ const Input = () => {
               className="form-check-input"
               type="radio"
               name="payment"
-              id="paypal"
+              id="Paypal"
               value="paypal"
               onChange={handelRadio}
 
             />
             <label 
             className="form-check-label" 
-            htmlFor="paypal">
+            htmlFor="Paypal">
             Paypal
             </label>
           </div>
@@ -300,7 +300,7 @@ const Input = () => {
                  href="#dataModel"
                 >Submite
               </button>
-              <InputModal/>
+              <InputModal data={data}/>
             </div>
           </div>
         </div>

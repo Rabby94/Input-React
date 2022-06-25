@@ -1,22 +1,16 @@
 import React from "react";
 
-const InputModal = () => {
+const InputModal = ({ data }) => {
   return (
     <div>
-      <div
-        className="modal fade"
-        id="dataModel"
-        
-      >
-        <div className="modal-dialog modal-dialog-centered">
+      <div className="modal fade  bd-example-modal-lg" id="dataModel">
+        <div className="modal-dialog modal-dialog-centered modal-lg">
           <div className="modal-content">
             <div className="modal-header">
               <div className="text-center col-11">
-              <h5 className="modal-title">
-                  Data Shit
-              </h5>
+                <h5 className="modal-title">Data Shit</h5>
               </div>
-              
+
               <button
                 type="button"
                 className="btn-close"
@@ -24,54 +18,90 @@ const InputModal = () => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">
-              Show a second modal and hide this one with the button below.
-            </div>
-            <div className="modal-footer">
-              <button
-                className="btn btn-primary"
-                data-bs-target="#exampleModalToggle2"
-                data-bs-toggle="modal"
-                data-bs-dismiss="modal"
-              >
-                Open second modal
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="modal fade"
-        id="exampleModalToggle2"
-        aria-hidden="true"
-        aria-labelledby="exampleModalToggleLabel2"
-        tabindex="-1"
-      >
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalToggleLabel2">
-                Modal 2
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              Hide this modal and show the first with the button below.
-            </div>
-            <div className="modal-footer">
-              <button
-                className="btn btn-primary"
-                data-bs-target="#exampleModalToggle"
-                data-bs-toggle="modal"
-                data-bs-dismiss="modal"
-              >
-                Back to first
-              </button>
+            <div className="modal-body px-4">
+              <div>
+                <h3 className="fs-6 d-inline">Name :</h3>
+                <span
+                 className="text-muted ms-2">
+                  {data.firstName
+                    ? data.firstName.concat(" ", data.lastName)
+                    : " N/A"}
+                </span>
+              </div>
+              <hr />
+
+              <div>
+                <h3 className="fs-6 d-inline">User Name : </h3>
+                <span
+                 className="text-muted ms-2">
+                  {data.userName ? data.userName : " N/A"}
+                </span>
+              </div>
+              <hr />
+
+              <div>
+                <h3 className="fs-6 d-inline">E-mail :</h3>
+                <span
+                 className="text-muted ms-2">
+                  {data.email ? data.email : " N/A"}
+                </span>
+              </div>
+              <hr />
+
+              <div>
+                <h3 
+                className="fs-6 d-inline">
+                    Address:
+                </h3>
+                <span
+                 className="text-muted ms-2">
+                   {data.Address ? data.Address : " N/A"}
+                </span>
+              </div>
+              <hr />
+
+              <div>
+                <h3 className="fs-6 d-inline">Country:</h3>
+                <span
+                 className="text-muted">
+                  {data.country ? data.country : " N/A"}
+                </span>
+              </div>
+              <hr />
+
+              <div>
+                <h3 className="fs-6 d-inline">State:</h3>
+                <span className="text-muted ms-2">
+                  {data.State ? data.State : " N/A"}
+                </span>
+              </div>
+              <hr />
+
+              <div>
+                <h3 className="fs-6 d-inline">Zip Code :</h3>
+                <span className="text-muted ms-2">
+                  {data.zip ? data.zip : " N/A"}
+                </span>
+              </div>
+              <hr />
+
+              <div>
+                <h3 className="fs-6 d-inline">Shipping Address :</h3>
+                <span
+                 className="text-muted ms-2">
+                  {data.shipping
+                    ? data.shipping
+                    : " Not Found Shipping Address"}
+                </span>
+              </div>
+              <hr />
+
+              <div>
+                <h3 className="fs-6 d-inline">Payment Methods :</h3>
+                <span className="text-muted ms-2">
+                  {data.payment ? data.payment : "Cash"}
+                </span>
+              </div>
             </div>
           </div>
         </div>
