@@ -1,9 +1,14 @@
 import React from "react";
 
-const InputModal = ({ data }) => {
+const InputModal = ({ data , toogle, setToggle}) => {
+
+  const modalShow = {
+    display: `${toogle ? "block" : "none"}`
+  }
+  console.log(toogle);
   return (
     <div>
-      <div className="modal fade  bd-example-modal-lg" id="dataModel">
+      <div className="modal fade  bd-example-modal-lg show" style={modalShow}>
         <div className="modal-dialog modal-dialog-centered modal-lg">
           <div className="modal-content">
             <div className="modal-header">
@@ -14,8 +19,7 @@ const InputModal = ({ data }) => {
               <button
                 type="button"
                 className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
+               onClick={()=>setToggle(false)}
               ></button>
             </div>
             <div className="modal-body px-4">

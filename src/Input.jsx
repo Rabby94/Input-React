@@ -5,6 +5,8 @@ import InputModal from "./InputModal";
 
 const Input = () => {
   const [data, setData] = useState({});
+  const [toogle, setToggle] = useState(false)
+
 
   const handelChange = ({ target }) => {
     const newData = { ...data, [target.id]: target.value };
@@ -296,11 +298,10 @@ const Input = () => {
             <div className="row">
               <button 
                 className="btn btn-primary"
-                data-bs-toggle="modal"
-                 href="#dataModel"
+                onClick={()=>setToggle(true)}
                 >Submite
               </button>
-              <InputModal data={data}/>
+              <InputModal data={data} toogle={toogle} setToggle={setToggle}/>
             </div>
           </div>
         </div>
