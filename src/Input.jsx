@@ -5,24 +5,28 @@ import InputModal from "./InputModal";
 
 const Input = () => {
   const [data, setData] = useState({});
-  const [toogle, setToggle] = useState(false)
-
+  const [toogle, setToggle] = useState(false);
 
   const handelChange = ({ target }) => {
     const newData = { ...data, [target.id]: target.value };
     if (target.id === "shipping") {
       newData.shipping = newData.Address;
     }
-    if (target.checked === false &&(target.id === "shipping" || target.id === "Save")) {
+    if (
+      target.checked === false &&
+      (target.id === "shipping" || target.id === "Save")
+    ) {
       delete newData[target.id];
     }
 
     setData(newData);
   };
 
-  const handelRadio=({target})=>{
-    if (target.checked===true){setData({...data,[target.name]:target.id})}
-  }
+  const handelRadio = ({ target }) => {
+    if (target.checked === true) {
+      setData({ ...data, [target.name]: target.id });
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +34,6 @@ const Input = () => {
 
   return (
     <div className="container">
-   
       <div className="row d-flex justify-content-center ">
         <div className="col-10 text-center">
           <img
@@ -221,7 +224,6 @@ const Input = () => {
           <hr className="my-4" />
           <h4 className="p-0">Payment</h4>
 
-          
           <div className="form-check">
             <input
               class="form-check-input"
@@ -231,9 +233,7 @@ const Input = () => {
               value="credit"
               onChange={handelRadio}
             />
-            <label
-             className="form-check-label" 
-             htmlFor="Credit">
+            <label className="form-check-label" htmlFor="Credit">
               Credit Card
             </label>
           </div>
@@ -245,11 +245,8 @@ const Input = () => {
               id="Debit"
               value="debit"
               onChange={handelRadio}
-
             />
-            <label 
-            className="form-check-label"
-             htmlFor="Debit">
+            <label className="form-check-label" htmlFor="Debit">
               Debit Card
             </label>
           </div>
@@ -261,12 +258,9 @@ const Input = () => {
               id="Paypal"
               value="paypal"
               onChange={handelRadio}
-
             />
-            <label 
-            className="form-check-label" 
-            htmlFor="Paypal">
-            Paypal
+            <label className="form-check-label" htmlFor="Paypal">
+              Paypal
             </label>
           </div>
 
@@ -295,13 +289,15 @@ const Input = () => {
             </div>
 
             <p className="fs-10">Full name as displayed on card</p>
+
             <div className="row">
-              <button 
+              <button
                 className="btn btn-primary"
-                onClick={()=>setToggle(true)}
-                >Submite
+                onClick={() => setToggle(true)}
+              >
+                Submite
               </button>
-              <InputModal data={data} toogle={toogle} setToggle={setToggle}/>
+              <InputModal data={data} toogle={toogle} setToggle={setToggle} />
             </div>
           </div>
         </div>
