@@ -1,16 +1,15 @@
 import React from "react";
 
-const InputModal = ({ data, toogle, setToggle }) => {
+const InputModal = ({ data, showModal, setShowModal }) => {
   const modalShow = {
-    display: `${toogle ? "block" : "none"}`,
-    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    display: `${showModal ? "block" : "none"}`,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   };
-
-  console.log(toogle);
+  
   return (
     <div>
       <div className="modal fade  bd-example-modal-lg show" style={modalShow}>
-        <div className="modal-dialog modal-dialog-centered modal-lg ">
+        <div className="modal-dialog ">
           <div className="modal-content zindex-dropdown">
             <div className="modal-header">
               <div className="text-center col-11">
@@ -20,7 +19,7 @@ const InputModal = ({ data, toogle, setToggle }) => {
               <button
                 type="button"
                 className="btn-close"
-                onClick={() => setToggle(false)}
+                onClick={() => setShowModal(false)}
               ></button>
             </div>
             <div className="modal-body px-4">
